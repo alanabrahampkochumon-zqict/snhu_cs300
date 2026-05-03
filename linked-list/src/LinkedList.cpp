@@ -191,8 +191,12 @@ void LinkedList::Remove(string bidId)
     // special case if matching node is the head
     if (head->bid.bidId == bidId)
     {
+        // store head in a temp variable
+        const Node* temp = head;
         // make head point to the next node in the list
         head = head->next;
+        // remove the head
+        delete temp;
         // decrease size count
         --size;
 
@@ -205,6 +209,7 @@ void LinkedList::Remove(string bidId)
     // since we have already checked the head,
     // we can start at head's next pointer
     Node* current = head->next;
+    // store a reference to previous pointer to make the deletion easier
     Node* prev = head;
 
     // while loop over each node looking for a match
@@ -213,14 +218,19 @@ void LinkedList::Remove(string bidId)
         // if the next node bidID is equal to the current bidID
         if (current->bid.bidId == bidId)
         {
-            // hold onto the next node temporarily
-            // make current node point beyond the next node
-            // now free up memory held by temp
+            // set previous node's next to
+            // current node's nex
             prev->next = current->next;
-            delete current;
 
+            // if the current node is the tail,
+            // move it back
+            if (current == tail) {
+                tail = prev; // Update tail to the previous node
+            }
+
+            // delete the current node
+            delete current;
             // decrease size count
-            // return
             --size;
             return;
         }
