@@ -114,7 +114,6 @@ LinkedList::~LinkedList()
  */
 void LinkedList::Append(Bid bid)
 {
-    // FIXME (2): Implement append logic
     // Create new node
     Node* node = new Node(bid);
 
@@ -143,18 +142,17 @@ void LinkedList::Append(Bid bid)
  */
 void LinkedList::Prepend(Bid bid)
 {
-    // FIXME (3): Implement prepend logic
     // Create new node
-    Node node(bid);
+    Node* node = new Node(bid);
 
     if (head != nullptr)
     {
         // if there is already something at the head...
         // new node points to current head as its next node
-        node.next = head;
-        // head now becomes the new node
-        head = &node;
+        node->next = head;
     }
+    // head now becomes the new node
+    head = node;
 
     // increase size count
     ++size;
@@ -165,7 +163,6 @@ void LinkedList::Prepend(Bid bid)
  */
 void LinkedList::PrintList()
 {
-    // FIXME (4): Implement print logic
     // start at the head
     Node* current = head;
 
@@ -187,7 +184,6 @@ void LinkedList::PrintList()
  */
 void LinkedList::Remove(string bidId)
 {
-    // FIXME (5): Implement remove logic
     // if the head is null, then return, since its an empty linked list.
     if (head == nullptr)
         return;
@@ -229,10 +225,10 @@ void LinkedList::Remove(string bidId)
             return;
         }
         prev = current;
+        // current node is equal to next node
         current = current->next;
     }
 
-    // current node is equal to next node
 }
 
 /**
@@ -242,7 +238,6 @@ void LinkedList::Remove(string bidId)
  */
 Bid LinkedList::Search(string bidId)
 {
-    // FIXME (6): Implement search logic
 
     // special case if matching bid is the head
     if (head->bid.bidId == bidId)
