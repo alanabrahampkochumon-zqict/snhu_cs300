@@ -29,3 +29,11 @@ target_link_libraries(
         VectorSorting PRIVATE
         StrictWarnings
 )
+
+# Copy the csv file into the directory of exec for testing
+add_custom_command(
+        TARGET VectorSorting POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "${CMAKE_CURRENT_SOURCE_DIR}/eBid_Monthly_Sales.csv"
+        "$<TARGET_FILE_DIR:VectorSorting>/eBid_Monthly_Sales.csv"
+)
