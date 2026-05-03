@@ -116,23 +116,25 @@ void LinkedList::Append(Bid bid)
 {
     // FIXME (2): Implement append logic
     // Create new node
-    Node node(bid);
+    Node* node = new Node(bid);
 
     // if there is nothing at the head
     if (head == nullptr)
     {
         // new node becomes the head ~and the tail
-        head = &node;
-        tail = &node;
+        head = node;
+        tail = node;
     }
     else
     {
         // else
         // make current tail node point to the new node
+        tail->next = node;
+        // node->next = tail;
         // and tail becomes the new node
-        // increase size count
-        tail = &node;
+        tail = node;
     }
+    // increase size count
     ++size;
 }
 
@@ -387,7 +389,7 @@ int main(int argc, char* argv[])
     {
         case 2:
             csvPath = argv[1];
-            bidKey = "98109";
+            bidKey = "84236";
             break;
         case 3:
             csvPath = argv[1];
@@ -395,7 +397,7 @@ int main(int argc, char* argv[])
             break;
         default:
             csvPath = "eBid_Monthly_Sales.csv";
-            bidKey = "98109";
+            bidKey = "84236";
     }
 
     clock_t ticks;
@@ -467,7 +469,7 @@ int main(int argc, char* argv[])
 
             case 5:
                 bidList.Remove(bidKey);
-
+                cout << "Bid Id " << bidKey << " was removed." << endl;
                 break;
         }
     }
