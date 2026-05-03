@@ -10,6 +10,7 @@
 
 #include <algorithm>
 #include <iostream>
+#include <utility>
 #include <string.h>
 #include <time.h>
 
@@ -141,7 +142,7 @@ int partition(vector<Bid>& bids, int begin, int end) {
     while (!done)
     {
         // keep incrementing low index while bids[low].title < Pivot
-        while (bids[low].title < pivot.title.c_str())
+        while (bids[low].title < pivot.title)
             ++low;
         // keep decrementing high index while Pivot < bids[high].title
         while (pivot.title < bids[high].title)
@@ -217,14 +218,14 @@ void selectionSort(vector<Bid>& bids)
         // loop over remaining elements to the right of position
         for (std::size_t it = pos + 1; it < size; ++it)
         { // if this element's title is less than minimum title
-            if (strcmp(bids[it].title.c_str(), bids[min].title.c_str()) < 0)
+            if (bids[it].title < bids[min].title)
             {
                 // this element becomes the minimum
                 min = it;
             }
         }
         // swap the current minimum with smaller one found
-        // swap is a built in vector method
+        // swap is a built-in STL method
         std::swap(bids[min], bids[pos]);
     }
 }
