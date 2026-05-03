@@ -6,6 +6,7 @@ Assignments for CS300: DSA - Analysis and Design
 
 - Vector Sorting: A simple application that loads bids from a CSV file and sorts the bids using selection sort and quick
   sort.
+- Linked List: A datastore for loading bids from CSV files into a singly-linked list.
 
 # Prerequisites
 

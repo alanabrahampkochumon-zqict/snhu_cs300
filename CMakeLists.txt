@@ -83,6 +83,7 @@ endif()
 
 
 add_subdirectory(vector-sorting)
+add_subdirectory(linked-list)
 
 
 
