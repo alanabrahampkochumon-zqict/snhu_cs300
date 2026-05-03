@@ -43,25 +43,6 @@ else()
     message(WARNING "clang-tidy not found")
 endif()
 
-
-# Doxygen
-find_package(Doxygen)
-if (DOXYGEN_FOUND)
-    message(STATUS "Doxygen found!")
-    doxygen_add_docs(
-        docs
-        ${CMAKE_CURRENT_SOURCE_DIR}
-        COMMENT "Generating documentation with doxygen..."
-        CONFIG_FILE ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile
-        ALL
-    )
-    set_target_properties(docs PROPERTIES FOLDER ${DevToolsDir})
-else()
-    message(WARN "Doxygen not found! Skipping documentation generation.")
-endif()
-
-
-
 option(ENABLE_STRICT "Enable Strict Warnings" OFF) # Option to enable compiler specific "Warning as Error"
 option(ASAN "Enable ASan" OFF) # Option to enable ASAN
 
@@ -100,11 +81,9 @@ if(MSVC AND NOT CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     add_compile_options("/MP")
 endif()
 
-include(dependencies.cmake)
 
-add_subdirectory(test-suite)
-add_subdirectory(benchmark-suite)
+add_subdirectory(vector-sorting)
 
 
 
-set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT TestSuite)
+set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT VectorSorting)
