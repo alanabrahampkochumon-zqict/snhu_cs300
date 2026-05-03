@@ -1,8 +1,11 @@
-[![Unit Tests](https://github.com/alanabrahampkochumon-zqict/CPP_Project_Template/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/alanabrahampkochumon-zqict/CPP_Project_Template/actions/workflows/unit-tests.yml)
+# SNHU CS300 Assignments
 
-# Modern C++ Project Template
+Assignments for CS300: DSA - Analysis and Design
 
-A high-performance boilerplate for C++ development featuring CMake integration, Google Test (GTest) for unit testing, and Google Benchmark for performance analysis.
+# Assignments
+
+- Vector Sorting: A simple application that loads bids from a CSV file and sorts the bids using selection sort and quick
+  sort.
 
 # Prerequisites
 
@@ -10,11 +13,11 @@ Ensure the following tools are installed and available in your system PATH:
 
 - <a href="https://cmake.org/download/" target="_blank">CMake</a> (3.25+): Build system generator.
 
-- <a href="https://git-scm.com/install/windows" target="_blank">Git</a>: Required for FetchContent dependency management.
+- <a href="https://git-scm.com/install/windows" target="_blank">Git</a>: Required for FetchContent dependency
+  management.
 
-- <a href="https://git-scm.com/install/windows" target="_blank">Doxygen(Doxywizard)</a> (Optional): Required to generate HTML/PDF documentation.
-
-- <a href="https://releases.llvm.org/download.html" target="_blank">Clang-Format</a> : Required for automated code style enforcement.
+- <a href="https://releases.llvm.org/download.html" target="_blank">Clang-Format</a> : Required for automated code style
+  enforcement.
 
 ## Getting Started
 
@@ -37,8 +40,6 @@ Bash
 Run these targets to maintain code quality and documentation.
 
 - Auto-Format: `cmake --build build --target format`
-
-- Generate Docs: cmake `--build build --target docs`
 
 ## Build Configurations (Windows)
 
