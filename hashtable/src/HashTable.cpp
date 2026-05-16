@@ -251,7 +251,16 @@ void HashTable::Remove(string bidId)
     auto row = nodes[key];
     if (row.bid.bidId == bidId)
     {
-        //TODO: Start here
+        row.key = UINT_MAX; // Mark the slot as unused (tombstone)
+                //TODO: Start here
+    }
+    Node* current = row.next;
+    while (current != nullptr)
+    {
+
+
+        // Move to the next item.
+        current = current->next;
     }
     // erase node begin and key
 }
